@@ -2,7 +2,7 @@ import React from 'react';
 import './Navbar.css';
 import Nav from 'react-bootstrap/Nav';
 import brand from './../../media/brand.png';
-import MenuIcon from '@material-ui/icons/Menu';
+import github from './../../media/github.png';
 
 export default class Navbar extends React.Component {
   render() {
@@ -17,7 +17,7 @@ export default class Navbar extends React.Component {
           UA, Kyiv
         </Nav>
         <Nav className="nav">
-          <MenuIcon/>
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/project-talan/tln-cli"><img className="Navbar__logo" src={github} alt=""></img></a>
         </Nav>
       </Nav>
     );
