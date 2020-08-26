@@ -11,14 +11,14 @@ document.body.classList.add('container-fluid', 'p-0', 'h-100');
 function App() {
   return (
     <div className="App d-flex flex-column h-100">
-      <Navbar hostUrl="." titleShort="tln.sh - CM & MVT" titleLong="tln.sh - Component Management & Minimal Viable Templates"/>
+      <Navbar hostUrl="." titleShort="tln.sh" titleLong="tln.sh"/>
       <BrowserRouter>
         <Switch>
           <Route exact path='/' component={Home} />
           <Redirect to='/'/>
         </Switch>
       </BrowserRouter>
-      <Footer version="v20.6.0"/>
+      <Footer version="v20.8.0"/>
     </div>
   );
 }
