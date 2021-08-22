@@ -4,19 +4,25 @@
 
 Talan CLI (`tln`) is an open-source framework for managing third-party components from wide range of ecosystems (Java, Node.js, C++, Golang, Angular etc.). `tln` helps to create fully `isolated` development environments, uniformly manage `mono- & multi-` repo configurations, build `smooth onboaring` experience, melt borders between `local` development environments and `CI/CT/CD` setups, get maximum from `Polyglot Programming Polyglot Persistence` (4Ps) design.
 
+Upcoming 2.x release will bring one new key feature: SaC - Architecture-as-Code.
+
 ## Similar or related projects
-* https://brew.sh/
-* https://conan.io/
-* https://github.com/mateodelnorte/meta
-* https://github.com/lerna/lerna
-* https://sdkman.io
-* https://www.jenv.be/
-* https://chocolatey.org/
+[Brew](https://brew.sh/), [Conan](https://conan.io/), [Meta](https://github.com/mateodelnorte/meta), [Lerna](https://github.com/lerna/lerna), [SDKMAN](https://sdkman.io), [jEnv](https://www.jenv.be/), [Chocolatey](https://chocolatey.org/)
 
 ## Prerequisites
-* Install `Nodejs 12.x` or higher (https://nodejs.org)
+* Install `Nodejs 14.x` or higher (https://nodejs.org)
+  ```
+  > curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
+  > sudo bash nodesource_setup.sh
+  > sudo apt-get install -y nodejs
+  ```
 * Make sure that `wget` is accessible via command line (Linux/MacOS)
-* Make sure that `Powershell` script can be executed, [check this link](https://superuser.com/questions/106360/how-to-enable-execution-of-powershell-scripts) (Windows)
+* Make sure that `Powershell` script can be executed:
+  ```
+  > set-executionpolicy remotesigned
+  or
+  > set-ExecutionPolicy unrestricted
+  ```
 * Install tln-cli 
   ```
   > npm i -g tln-cli
@@ -94,12 +100,13 @@ Talan CLI (`tln`) is an open-source framework for managing third-party component
   ```
 
 ## tln architecture & in-depth details
-* What is Component?
-* Management of environment variables & dotenv files
-* Versioning
-* Mono- & multi-repo configurations
-* MVTs - Minimal Vaible Templates
-* Software Development Life Cycle
+* [What is Component?](docs/component.md)
+* [Management of environment variables & dotenv files](docs/dotenv.md)
+* [Versioning](docs/versioning.md)
+* [Mono- & multi-repo configurations](docs/repos.md)
+* [MVTs - Minimal Vaible Templates](docs/mvt.md)
+* [Software Development Life Cycle](docs/sdlc.md)
+
 
 ## Real life scenario <sub><sup>~15 min</sup></sub>
 Let's say, you've joined Calbro.com company to head software project development. You will need to build new service as part of multiple already in-production applications. Your first steps are: configure local development environment, checkout existing projects and create initial structure for the new one.

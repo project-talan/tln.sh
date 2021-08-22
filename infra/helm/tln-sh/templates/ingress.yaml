@@ -1,0 +1,27 @@
+{{- range .Values.routes }}
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: tln-sh-ingress-{{ .suffix }}
+  namespace: {{ $.Values.namespace }}
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: {{ $.Values.proxyBodySize }}
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: {{ .rewrite }}
+spec:
+  tls:
+  - hosts:
+    - 'tln.sh'
+    secretName: ingress-tls
+  rules:
+  - host: "tln.sh"
+    http:
+      paths:
+      - backend:
+          serviceName: {{ .backend }}
+          servicePort: 80
+        path: {{ .path }}
+---
+{{- end }}

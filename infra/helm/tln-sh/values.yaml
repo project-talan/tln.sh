@@ -1,0 +1,26 @@
+namespace: ""
+
+registry: ""
+
+domain: ""
+reverseDomain: ""
+tlnShVersion: ""
+
+tlsCertificate: ""
+tlsKey: ""
+dockerSecret: ""
+
+proxyBodySize: "1m"
+
+deployments:
+  static:
+    prefix: "static"
+    instances:
+      html:
+        replicas: 2
+
+routes:
+  - suffix: "app"
+    rewrite: "/$1"
+    backend: "static-html"
+    path: "/(.*)"
