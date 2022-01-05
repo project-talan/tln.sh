@@ -40,7 +40,7 @@ export default class Login extends React.Component {
   handleSubmit(event) {
     if (!this.state.loading) {
       this.setState({ loading: true, error: null});
-      const { login, password } = this.state
+      const { login, password } = this.state;
       this.props.authService.login(login, password)
       .then(res => {
         this.setState({ loading: false});
@@ -63,7 +63,7 @@ export default class Login extends React.Component {
       <div className="jumbotron bg-light border-0 rounded-0">
         <div className="container-fluid">
           <div className="row text-left">
-            <div className="offset-sm-4 col-sm-4">
+            <div className="offset-md-4 col-md-4">
               {this.state.error && <div className="alert alert-danger text-center" role="alert">{this.state.error}</div>}
               <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
