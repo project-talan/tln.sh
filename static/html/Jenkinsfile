@@ -11,12 +11,12 @@ properties([
       //'TLN_COMPONENT_PARAM_PORTS': '',
       //'TLN_LOCAL_REPO': '',
 
-      'TLN_GITHUB_ACCESS_TOKEN': "${PROJECT_TALAN_GITHUB_ACCESS_TOKEN}",
+      'TLN_GITHUB_ACCESS_TOKEN': "${GITHUB_ACCESS_TOKEN}",
 
-      'TLN_SONARQUBE_SERVER': "${PROJECT_TALAN_SONARQUBE_SERVER}",
-      'TLN_SONARQUBE_SCANNER': "${PROJECT_TALAN_SONARQUBE_SCANNER}",
+      'TLN_SONARQUBE_SERVER': "${SONARQUBE_SERVER}",
+      'TLN_SONARQUBE_SCANNER': "${SONARQUBE_SCANNER}",
       'TLN_SONARQUBE_QUALITY_GATES': true,
-      'TLN_SONARQUBE_ACCESS_TOKEN': "${PROJECT_TALAN_SONARQUBE_ACCESS_TOKEN}"
+      'TLN_SONARQUBE_ACCESS_TOKEN': "${SONARQUBE_ACCESS_TOKEN}"
     ])
   )
 ])
@@ -33,6 +33,7 @@ node {
     //
     // Create config for detached build
     sh "echo '{\"detach\": true}' > '.tlnrc'"
+    sh "tln --version"
 
     //
     // Get information from project's config
@@ -64,8 +65,7 @@ node {
     stage('Delivery') {
       if (helper.pullRequest){
       } else {
-        // create docker, push artifacts to the Harbor/Nexus/etc.
-        // archiveArtifacts artifacts: 'path/2/artifact'
+        sh 'tln docker-build -e TLN_UID=${TLN_COMPONENT_UID} -e TLN_VERSION=${TLN_COMPONENT_VERSION}'
       }
     }
 
