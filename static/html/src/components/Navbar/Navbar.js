@@ -3,6 +3,7 @@ import './Navbar.css';
 import Nav from 'react-bootstrap/Nav';
 import brand from './../../media/brand.png';
 import github from './../../media/github.png';
+import Npm from './../../media/npm.webp';
 
 export default class Navbar extends React.Component {
   render() {
@@ -17,6 +18,9 @@ export default class Navbar extends React.Component {
           UA, Kyiv
         </Nav>
         <Nav className="nav">
+        </Nav>
+        <Nav className="nav">
+          <a target="_blank" rel="noopener noreferrer" href="https://www.npmjs.com/package/tln-cli"><img className="Navbar__logo mr-2" src={Npm} alt=""></img></a>
           <a target="_blank" rel="noopener noreferrer" href="https://github.com/project-talan/tln-cli"><img className="Navbar__logo" src={github} alt=""></img></a>
         </Nav>
       </Nav>

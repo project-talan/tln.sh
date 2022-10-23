@@ -2,21 +2,20 @@
 
 <img alt="ccf" align="right" src="https://raw.githubusercontent.com/project-talan/tln-cli/master/docs/banner.jpg" width="300">
 
-Talan CLI (`tln`) is an open-source framework for managing third-party components from wide range of ecosystems (Java, Node.js, C++, Golang, Angular etc.). `tln` helps to create fully `isolated` development environments, uniformly manage `mono- & multi-` repo configurations, build `smooth onboaring` experience, melt borders between `local` development environments and `CI/CT/CD` setups, get maximum from `Polyglot Programming Polyglot Persistence` (4Ps) design.
+Talan CLI (`tln`) is an open-source framework for managing third-party components from a wide range of ecosystems (Java, Node.js, C++, Golang, Angular etc.). `tln` helps to create fully `isolated` development environments, uniformly manage `mono- & multi-` repo configurations, build `smooth onboarding` experience, melt borders between `local` development environments and `CI/CT/CD` setups, get maximum from `Polyglot Programming Polyglot Persistence` (4Ps) design.
 
-Upcoming 2.x release will bring new key feature: AaC - Architecture-as-Code.
+Upcoming 2.x release will bring a new key feature: AaC - Architecture-as-Code.
 
 ## Similar or related projects
 [Brew](https://brew.sh/), [Conan](https://conan.io/), [Meta](https://github.com/mateodelnorte/meta), [Lerna](https://github.com/lerna/lerna), [SDKMAN](https://sdkman.io), [jEnv](https://www.jenv.be/), [Chocolatey](https://chocolatey.org/)
 
 ## Prerequisites
-* Install `Nodejs 14.x` or higher (https://nodejs.org)
+* Install `Nodejs 16.x` or higher (https://nodejs.org)
 
   Linux
   ```
-  curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
-  sudo bash nodesource_setup.sh
-  sudo apt install nodejs && node -v
+  curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh && sudo bash nodesource_setup.sh && sudo apt-get install -y nodejs && node -v
+  
   ```
 * Make sure that `wget` is accessible via command line (Linux/MacOS)
 * Make sure that `Powershell` script can be executed (Windows):
@@ -58,44 +57,40 @@ Upcoming 2.x release will bring new key feature: AaC - Architecture-as-Code.
     env: async (tln, env) => {},
     dotenvs: async (tln) => [],
     inherits: async (tln) => [],
-    depends: async (tln) => ['mvn-3.6.3', 'openjdk-11.0.2', 'go-1.14.4', 'node-14.4.0', 'angular-9.1.8', 'cordova-9.0.0'],
-    steps: async (tln) => [
-      {
-        id: "versions",
-        builder: async (tln, script) => script.set([
-          'java -version && mvn -v && go version && node -v && cordova -v && ng version'
-        ])
-      }
-    ],
+    depends: async (tln) => ['openjdk-18', 'mvn-3.8.6', 'go-1.19.2', 'node-16.18.0', 'kubectl-1.23.13', 'firebase-11.15.0'],
+    steps: async (tln) => [],
     components: async (tln) => []
   }
   ```
-* Install dependencies. mvn-3.6.3, openjdk-11.0.2, go-1.14.4, node-14.4.0, angular-9.1.8, cordova-9.0.0 components will be installed inside `projects` folder and `will not affect any other already installed software`.
+* Next command will install all components were listed inside `depends` section from `.tln.conf`. Components will be installed inside `projects` folder and `will not affect any other already installed software`.
   ```
   tln install --depends
   ```
 * Check version of installed components
   ```
-  tln versions
+  tln versions --depends
   ```
   ```
-  openjdk version "11.0.2" 2019-01-15
-  OpenJDK Runtime Environment 18.9 (build 11.0.2+9)
-  OpenJDK 64-Bit Server VM 18.9 (build 11.0.2+9, mixed mode)
-    
-  Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)
-  Maven home: D:\projects2\maven\mvn-3.6.3\bin\..
-  Java version: 11.0.2, vendor: Oracle Corporation, runtime: D:\projects2\java\openjdk-11.0.2
-  Default locale: en_US, platform encoding: Cp1251
-  OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
-    
-  go version go1.14.4 windows/amd64
-    
-  v14.4.0
-    
-  9.0.0 (cordova-lib@9.0.1)
-    
-  Angular CLI: 9.1.8    
+  [java]
+  openjdk version "18" 2022-03-22
+  OpenJDK Runtime Environment (build 18+36-2087)
+  OpenJDK 64-Bit Server VM (build 18+36-2087, mixed mode, sharing)
+  [maven]
+  Apache Maven 3.8.6 (84538c9988a25aec085021c365c560670ad80f63)
+  Maven home: /root/projects/maven/mvn-3.8.6
+  Java version: 1.8.0_342, vendor: Private Build, runtime: /usr/lib/jvm/java-8-openjdk-amd64/jre
+  Default locale: en, platform encoding: UTF-8
+  OS name: "linux", version: "4.15.0-194-generic", arch: "amd64", family: "unix"
+  [golang]
+  go version go1.19.2 linux/amd64
+  [node]
+  v16.18.0
+  [npm]
+  8.19.2
+  [kubectl]
+  Client Version: version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.13", GitCommit:"592eca05be27f7d927d0b25cbb4241d75a9574bf", GitTreeState:"clean", BuildDate:"2022-10-12T10:57:16Z", GoVersion:"go1.17.13", Compiler:"gc", Platform:"linux/amd64"}
+  [firebase]
+  11.15.0
   ```
 
 ## tln architecture & in-depth details
@@ -320,4 +315,3 @@ Calbro software development culture also includes recommendation to reuse wide r
   └ nodejs
     └ node-14.4.0
   ```
-
