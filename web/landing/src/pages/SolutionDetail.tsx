@@ -30,7 +30,7 @@ const SolutionDetail = ({ slug }: SolutionDetailProps) => {
 
             <img
               src={`/hero-${solution.slug}.png`}
-              alt=""
+              alt={`${solution.name} illustration`}
               className="mx-auto w-full max-w-md"
             />
           </div>

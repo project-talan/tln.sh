@@ -64,7 +64,7 @@ const Home = () => (
       <PageContainer>
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">The suite</p>
         <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-          Three tools, one SDLC.
+          Three tools - one SDLC
         </h2>
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
           {solutions.map((solution) => (

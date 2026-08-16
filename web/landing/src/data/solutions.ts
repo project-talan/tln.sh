@@ -81,7 +81,7 @@ export const solutions: Solution[] = [
         resultTone: 'success',
       },
     ],
-    license: 'MIT (implied — not explicitly confirmed in the source repository)',
+    license: 'MIT',
     extraNote:
       'Talan Clouds is not published to npm as a standalone package — it is a repository skeleton you clone and adapt, built on top of Talan CLI and Talan PM.',
     relatedSlugs: ['cli', 'project-management'],

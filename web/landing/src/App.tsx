@@ -11,7 +11,7 @@ const App = () => (
       className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[640px] bg-[radial-gradient(ellipse_800px_420px_at_50%_-15%,rgba(59,130,246,0.22),transparent)]"
     />
     <Navbar />
-    <div className="flex-1">
+    <main className="flex-1">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cli" element={<SolutionDetail slug="cli" />} />
@@ -19,7 +19,7 @@ const App = () => (
         <Route path="/project-management" element={<SolutionDetail slug="project-management" />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </div>
+    </main>
     <Footer />
   </div>
 );
