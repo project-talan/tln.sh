@@ -83,7 +83,7 @@ export const solutions: Solution[] = [
     ],
     license: 'MIT',
     extraNote:
-      'Talan Clouds is not published to npm as a standalone package — it is a repository skeleton you clone and adapt, built on top of Talan CLI and Talan PM.',
+      'Talan Clouds is not published to npm as a standalone package - it is a repository skeleton you clone and adapt, built on top of Talan CLI and Talan PM.',
     relatedSlugs: ['cli', 'project-management'],
   },
   {
@@ -92,7 +92,7 @@ export const solutions: Solution[] = [
     packageName: 'tln-pm',
     tagline: 'Project management as code.',
     summary:
-      'Integrates project management into Git-based workflows by treating SDLC artifacts as code — a single source of truth for all software development lifecycle activities.',
+      'Integrates project management into Git-based workflows by treating SDLC artifacts as code - a single source of truth for all software development lifecycle activities.',
     description:
       'Talan PM (the "tpm" CLI) closes the gap between development and project management tooling. Instead of maintaining a separate PM tool that drifts out of sync with the repo, tasks, estimates, and reports live alongside the code they describe.',
     features: [

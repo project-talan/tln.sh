@@ -36,7 +36,7 @@ const Home = () => (
               SDLC orchestration for polyglot teams.
             </h1>
             <p className="mt-5 max-w-lg text-lg text-zinc-400">
-              Three open-source, MIT-licensed tools covering the software development lifecycle &mdash; from
+              Three open-source, MIT-licensed tools covering the software development lifecycle - from
               architecture and local development environments, through cloud infrastructure, to project
               management.
             </p>

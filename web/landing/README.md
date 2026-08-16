@@ -1,12 +1,12 @@
 # tln-landing
 
-Marketing landing page for **Project Talan** — an overview page plus one detail page each for
+Marketing landing page for **Project Talan** - an overview page plus one detail page each for
 [tln-cli](https://github.com/project-talan/tln-cli), [tln-clouds](https://github.com/project-talan/tln-clouds),
 and [tln-pm](https://github.com/project-talan/tln-pm).
 
 Stack: Vite + React + TypeScript + Tailwind CSS + react-router-dom, built with pnpm, served by nginx.
 
-This app is fully self-contained and independent of this repository's `tln` CLI orchestration — there is
+This app is fully self-contained and independent of this repository's `tln` CLI orchestration - there is
 intentionally no `.tln.conf` here.
 
 ## Local development
