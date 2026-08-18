@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom';
+import { solutionNavLabels } from '../../data/solutions';
 
 const links = [
   { to: '/', label: 'Overview' },
-  { to: '/cli', label: 'Talan CLI' },
-  { to: '/cloud-skeleton', label: 'Talan Clouds' },
-  { to: '/project-management', label: 'Talan PM' },
+  { to: '/cli', label: solutionNavLabels.cli },
+  { to: '/cloud-skeleton', label: solutionNavLabels['cloud-skeleton'] },
+  { to: '/project-management', label: solutionNavLabels['project-management'] },
 ];
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>

@@ -8,13 +8,18 @@
     "node": ">=20"
   },
   "scripts": {
+    "sync-version": "node scripts/sync-version.mjs",
+    "predev": "pnpm run sync-version",
+    "prebuild": "pnpm run sync-version",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "lint": "biome lint ."
+    "lint": "biome lint .",
+    "docker:build": "pnpm run sync-version && docker build -t tln-landing:local ."
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2"

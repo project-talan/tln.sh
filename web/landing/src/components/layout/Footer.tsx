@@ -1,7 +1,7 @@
 const Footer = () => (
   <footer className="border-t border-white/10">
     <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-10 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
-      <p>&copy; {new Date().getFullYear()} Project Talan. Open source, MIT-licensed tooling for the SDLC.</p>
+      <p>&copy; {new Date().getFullYear()} Project Talan. Open source, MIT-licensed tooling for the SDLC, v{__APP_VERSION__}</p>
       <div className="flex items-center gap-4">
         <a
           href="https://www.linkedin.com/in/vladyslav-kurmaz-a635005/"

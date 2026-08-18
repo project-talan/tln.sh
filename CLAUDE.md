@@ -14,8 +14,9 @@ Each `.tln.conf` file is a Node module exporting `{ options, env, dotenvs, inher
 ## Repo layout
 
 - `.tln.conf` — root component. Sets `TLN_UID=sh.tln`, `TLN_VERSION` (read from `version` file), registry (`registry.digitalocean.com/projects-cr`), namespace (`tln-sh`), and a `create-secrets` step that assembles `secrets/values.yaml` from local `secrets/tln.sh.crt`, `secrets/tln.sh.key`, and `secrets/config.json` (all gitignored — see `.gitignore` → `secrets`). There is currently no `deploy`/Helm step defined anywhere in this repo — only secret assembly.
-- `version` — single-line app version (e.g. `26.8.0`), read by the root `.tln.conf` into `TLN_VERSION`.
+- `version` — single-line app version (e.g. `26.8.0`), read by the root `.tln.conf` into `TLN_VERSION`, and mirrored into the landing page footer (see `web/landing/scripts/sync-version.mjs` below).
 - `web/landing/` — the marketing landing page for Project Talan (overview + one detail page each for `tln-cli`, `tln-clouds`, `tln-pm`). Fully self-contained: its own `package.json`/`pnpm-lock.yaml`, `Dockerfile` (multi-stage `node:20-alpine` + pnpm build → `nginx:alpine` runtime), and `nginx.conf`. No `.tln.conf` here by design.
+  - `scripts/sync-version.mjs` — copies the root `version` file into `web/landing/version` (gitignored). Runs automatically via the `predev`/`prebuild` pnpm hooks. `vite.config.ts` reads that local copy at build time and exposes it as the `__APP_VERSION__` global, rendered in `Footer.tsx`. Falls back to `0.0.0` if the root file isn't reachable (e.g. a standalone checkout of `web/landing/` on its own, or a Docker build context that wasn't pre-synced).
   - `src/App.tsx` — router: `/` → `Home`, `/cli` `/cloud-skeleton` `/project-management` → `SolutionDetail`, catch-all redirects to `/`.
   - `src/data/solutions.ts` — single typed content source (name, tagline, description, features, links, install/getting-started terminal blocks) for all three tools; `Home` and `SolutionDetail` both read from it.
   - `src/components/TerminalWindow.tsx` — reusable terminal-mockup component (traffic-light chrome + typed `TerminalBlock[]` content) used for both the hero demo and the install/getting-started snippets.
@@ -37,10 +38,10 @@ Frontend commands run from `web/landing/`:
 - `pnpm lint` — `biome lint .`
 
 Docker (from `web/landing/`):
-- `docker build -t tln-landing:local .`
+- `pnpm run docker:build` — syncs the root `version` file into the build context, then runs `docker build -t tln-landing:local .`. Plain `docker build` skips the sync, so the footer falls back to `0.0.0` unless a synced `version` file is already present.
 - `docker run --rm -p 8080:80 tln-landing:local`
 
 ## Notes
 
 - `secrets/` (gitignored) must exist locally with `tln.sh.crt`, `tln.sh.key`, `config.json` before the root `create-secrets` step can run — these are not present in the repo and are expected to be provisioned out-of-band.
-- `web/landing/` is intentionally decoupled from the `tln` CLI orchestration and the root `version` file — it has its own independent `version` in `package.json`.
+- `web/landing/` is intentionally decoupled from the `tln` CLI orchestration — it has its own independent `version` in `package.json` — but the footer's displayed version is mirrored from the root `version` file via `scripts/sync-version.mjs` (see above), not from `package.json`.
