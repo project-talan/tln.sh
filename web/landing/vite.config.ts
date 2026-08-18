@@ -1,9 +1,9 @@
 import { existsSync, readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-const versionFile = resolve(__dirname, 'version');
+const versionFile = fileURLToPath(new URL('./version', import.meta.url));
 const appVersion = existsSync(versionFile) ? readFileSync(versionFile, 'utf-8').trim() : '0.0.0';
 
 export default defineConfig({
