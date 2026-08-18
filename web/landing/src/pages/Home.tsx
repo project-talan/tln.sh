@@ -33,7 +33,7 @@ const Home = () => (
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-400">Project Talan</p>
             <h1 className="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-              SDLC orchestration for polyglot teams.
+              SDLC Orchestration
             </h1>
             <p className="mt-5 max-w-lg text-lg text-zinc-400">
               Three open-source, MIT-licensed tools covering the software development lifecycle - from
@@ -55,7 +55,7 @@ const Home = () => (
             </div>
           </div>
 
-          <TerminalWindow title="~/platform" blocks={heroBlocks} />
+          <TerminalWindow title="~/projects/petramco/platform" blocks={heroBlocks} />
         </div>
       </PageContainer>
     </section>

@@ -2,6 +2,12 @@ import type { TerminalBlock } from '../types/terminal';
 
 export type SolutionSlug = 'cli' | 'cloud-skeleton' | 'project-management';
 
+export const solutionNavLabels: Record<SolutionSlug, string> = {
+  cli: 'CLI',
+  'cloud-skeleton': 'Clouds',
+  'project-management': 'Project Management',
+};
+
 export type Solution = {
   slug: SolutionSlug;
   name: string;
@@ -14,7 +20,6 @@ export type Solution = {
   npmUrl?: string;
   install?: TerminalBlock[];
   gettingStarted?: TerminalBlock[];
-  cardPreview: TerminalBlock[];
   license: string;
   extraNote?: string;
   relatedSlugs?: SolutionSlug[];
@@ -25,7 +30,7 @@ export const solutions: Solution[] = [
     slug: 'cli',
     name: 'Talan CLI',
     packageName: 'tln-cli',
-    tagline: 'Architecture as code.',
+    tagline: 'Architecture as Code',
     summary:
       'An open-source framework for managing third-party components across diverse programming ecosystems, enabling isolated development environments and unified mono/multi-repo management.',
     description:
@@ -40,14 +45,6 @@ export const solutions: Solution[] = [
     githubUrl: 'https://github.com/project-talan/tln-cli',
     npmUrl: 'https://www.npmjs.com/package/tln-cli',
     install: [{ command: 'npm i -g tln-cli@1.110.0' }],
-    cardPreview: [
-      {
-        comment: 'serve a service straight from the monorepo',
-        command: 'tln init:serve backend/services/apps/iam -- --use-docker',
-        result: 'ready in 4.2s',
-        resultTone: 'success',
-      },
-    ],
     license: 'MIT',
     relatedSlugs: ['cloud-skeleton', 'project-management'],
   },
@@ -73,14 +70,6 @@ export const solutions: Solution[] = [
         command: 'git clone git@github.com:project-talan/tln-clouds.git',
       },
     ],
-    cardPreview: [
-      {
-        comment: 'scaffold a multi-tenant cloud skeleton',
-        command: 'git clone tln-clouds && cd tln-clouds',
-        result: 'layered AWS infra ready to adapt',
-        resultTone: 'success',
-      },
-    ],
     license: 'MIT',
     extraNote:
       'Talan Clouds is not published to npm as a standalone package - it is a repository skeleton you clone and adapt, built on top of Talan CLI and Talan PM.',
@@ -90,7 +79,7 @@ export const solutions: Solution[] = [
     slug: 'project-management',
     name: 'Talan PM',
     packageName: 'tln-pm',
-    tagline: 'Project management as code.',
+    tagline: 'Project Management as Code',
     summary:
       'Integrates project management into Git-based workflows by treating SDLC artifacts as code - a single source of truth for all software development lifecycle activities.',
     description:
@@ -116,14 +105,6 @@ export const solutions: Solution[] = [
         command: 'tpm serve',
         result: 'http://localhost:5445',
         resultTone: 'muted',
-      },
-    ],
-    cardPreview: [
-      {
-        comment: 'track work where the code already lives',
-        command: 'tpm ls --backlog -t 26.8.0',
-        result: 'SDLC artifacts linked to git',
-        resultTone: 'success',
       },
     ],
     license: 'MIT',

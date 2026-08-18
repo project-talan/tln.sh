@@ -2,3 +2,6 @@ node_modules
 dist
 .vite
 *.local
+
+# synced from ../../version by scripts/sync-version.mjs
+version
